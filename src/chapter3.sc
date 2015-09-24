@@ -5,6 +5,7 @@ object Chapter3 {
    * 1. Write a code snippet that sets a to an array of n random integers between 0
    * (inclusive) and n (exclusive).
    */
+
   import util.Random
 
   def randomArray(n: Int) = {
@@ -12,6 +13,7 @@ object Chapter3 {
     for (i <- a.indices) a(i) = Random.nextInt(n)
     a
   }
+
   val a = randomArray(5)
 
   /**
@@ -28,6 +30,7 @@ object Chapter3 {
     }
     a
   }
+
   swapArray(a)
 
   /**
@@ -41,6 +44,7 @@ object Chapter3 {
     else a(i + 1)
     a
   }
+
   swapArrayWithYield(a)
 
   /**
@@ -53,6 +57,7 @@ object Chapter3 {
     val negatives = for (elem <- a if elem <= 0) yield elem
     positives ++ negatives
   }
+
   posnegArray(Array(-3, 3, 0, -5, 2, 5))
 
   /**
@@ -61,6 +66,7 @@ object Chapter3 {
   def averageArray(a: Array[Double]): Double = {
     a.sum / a.length
   }
+
   averageArray(Array(5.0, 2.0, 3.0))
 
   /**
@@ -71,11 +77,13 @@ object Chapter3 {
     scala.util.Sorting.quickSort(a)
     a.reverse
   }
+
   reverseSortArray(Array(3, 2, 18, 5, 0))
 
   def reverseSortArrayBuffer(a: ArrayBuffer[Int]): ArrayBuffer[Int] = {
     a.sortWith(_ > _)
   }
+
   reverseSortArrayBuffer(ArrayBuffer(3, 2, 18, 5, 0))
 
   /**
@@ -85,6 +93,7 @@ object Chapter3 {
   def removeDuplicates(a: Array[Int]): Array[Int] = {
     a.distinct
   }
+
   removeDuplicates(Array(5, 1, 2, 2, 3, 5))
 
   /**
@@ -100,24 +109,29 @@ object Chapter3 {
     for (negIndex <- negIndexes) a.remove(negIndex)
     a
   }
+
   removeAllButFirst(ArrayBuffer(-1, 3, -4, -5, 6, -2))
   /**
    * 9. Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs
    * that are in America. Strip off the "America/" prefix and sort the result.
    */
-  val americanTimeZones = java.util.TimeZone.getAvailableIDs().filter(_ startsWith("America/")).map(_.stripPrefix("America/")).sorted
+  val americanTimeZones = java.util.TimeZone.getAvailableIDs().filter(_ startsWith ("America/")).map(_.stripPrefix("America/")).sorted
 
   /**
    * 10. Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with
    * the call
-   *  val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
+   * val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
    * Then call the getNativesForFlavor method with parameter DataFlavor.imageFlavor
    * and get the return value as a Scala buffer. (Why this obscure class? It's hard
    * to find uses of java.util.List in the standard Java library.)
    */
+
   import java.awt.datatransfer._
+
   val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
+
   import scala.collection.JavaConversions.asScalaBuffer
   import scala.collection.mutable.Buffer
+
   val natives: Buffer[String] = flavors.getNativesForFlavor(DataFlavor.imageFlavor)
 }
