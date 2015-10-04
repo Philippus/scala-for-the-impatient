@@ -9,7 +9,6 @@ object Chapter6 {
     def inchesToCentimeters(inches: Double): Double = inches * 2.54
 
     def gallonsToLiters(gallons: Double): Double = gallons * 3.785
-
     def milesToKilometers(miles: Double): Double = miles * 1.609
   }
 
@@ -27,13 +26,11 @@ object Chapter6 {
 
     def apply(value: Double) = convert(value)
   }
-
   object InchesToCentimeters extends UnitConversion(2.54)
 
   object GallonsToLiters extends UnitConversion(3.785)
 
   object MilesToKilometers extends UnitConversion(1.609)
-
   InchesToCentimeters.convert(18)
   GallonsToLiters.convert(10)
   MilesToKilometers.convert(5)
@@ -55,7 +52,6 @@ object Chapter6 {
   object Point {
     def apply(x: Int, y: Int) = new Point(x, y)
   }
-
   val p = Point(3, 4)
   println("Point is at (" + p.x + "," + p.y + ")")
 
@@ -72,16 +68,15 @@ object Chapter6 {
 
   /**
    * 6. Write an enumeration describing the four playing card suits so that the toString
-   * method returns ?, ?, ?, or ?.
+   * method returns ♣, ♦, ♥, or ♠.
    */
   object Suit extends Enumeration {
     type Suit = Value
-    val Clubs = Value("?")
-    val Diamonds = Value("?")
-    val Hearts = Value("?")
-    val Spades = Value("?")
+    val Clubs = Value("♣")
+    val Diamonds = Value("♦")
+    val Hearts = Value("♥")
+    val Spades = Value("♠")
   }
-
   println(Suit.values)
 
   /**
